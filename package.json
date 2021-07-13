@@ -1,0 +1,27 @@
+{
+  "name": "lan-var",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^6.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.13",
+    "mongoose-aggregate-paginate-v2": "^1.0.42",
+    "mongoose-fuzzy-searching": "^2.0.2",
+    "mongoose-paginate-v2": "^1.3.18"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

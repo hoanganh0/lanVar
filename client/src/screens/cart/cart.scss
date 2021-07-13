@@ -1,0 +1,234 @@
+.cart-page {
+  margin: 70px 0;
+
+  @media(max-width: 767px){
+    margin-top: 80px;
+  }
+
+  h1 {
+    margin-bottom: 30px;
+
+    @media (max-width: 767px){
+      font-size: 30px;
+    }
+  }
+
+  .cart-summary {
+    @media (max-width: 767px){
+      max-width: 100%;
+      overflow: auto;
+    }
+
+    table {
+      width: 100%;
+
+      @media (max-width: 767px){
+        width: 690px;
+      }
+
+      thead {
+        border-bottom: 1px solid;
+        border-color: #eee;
+
+        th {
+          padding: 15px 0;
+          border: 0;
+          font-size: 14px;
+          text-transform: uppercase;
+          font-weight: 400;
+          color: #555;
+
+          &.product-quantity {
+            text-align: center;
+          }
+
+          &.product-sutotal {
+            text-align: right;
+          }
+        }
+      }
+
+      tr {
+        td {
+          padding: 30px 0;
+          border-bottom: 1px solid;
+          border-color: #f0f0f0;
+
+          &.cart-product-details {
+            display: flex;
+            align-items: center;
+          }
+
+          &:not(:first-child) {
+            width: 18%;
+            font-size: 18px;
+          }
+
+          &.product-quantity {
+            text-align: center;
+
+            .quantity {
+              display: inline-block;
+              border: 1px solid;
+              border-color: #e5e5e5;
+
+              input {
+                width: 62px;
+                height: 50px;
+                padding: 6px 0px 6px 10px;
+                border: 0;
+                vertical-align: middle;
+                text-align: center;
+                outline: 0;
+              }
+
+              .product-qty-arrows {
+                display: inline-block;
+                vertical-align: middle;
+                padding: 6px 9px 6px 0px;
+              }
+            }
+          }
+
+          &.product-subtotal {
+            text-align: right;
+          }
+
+          .product-thumbnail {
+            margin-right: 30px;
+
+            @media (max-width: 991px) {
+              margin-right: 5px;
+            }
+
+            img {
+              max-width: 90px;
+              height: auto;
+              vertical-align: middle;
+            }
+          }
+
+          .product-name {
+            font-size: 18px;
+            margin-bottom: 5px;
+            margin-top: 0;
+            color: #333333;
+          }
+
+          .product-properties {
+            color: #333;
+            font-size: 14px;
+          }
+
+          .product-remove {
+            a {
+              font-size: 14px;
+              color: #999;
+              border-bottom: 1px solid;
+              padding-bottom: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .product-button-continute {
+    margin-top: 20px;
+
+    a {
+      padding: 20px 0px;
+      font-size: 13px;
+      line-height: 1.3;
+      display: inline-block;
+      margin-bottom: 0;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+      white-space: nowrap;
+      padding: 19px 32px;
+      border: 1px solid #1868b7;
+      color: #1868b7;
+
+      @media (max-width: 767px){
+        padding: 15px;
+      }
+    }
+  }
+
+  .cart-collaterals {
+    margin-left: auto;
+
+    @media (min-width: 768px){
+      width: 400px;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 24px;
+      display: none;
+    }
+
+    table {
+      width: 100%;
+
+      td {
+        text-align: right;
+      }
+
+      th {
+        font-size: 18px;
+        color: #1e1e20;
+        vertical-align: baseline;
+        padding: 15px 0;
+        padding-right: 2em;
+        width: 75%;
+      }
+
+      .cart-subtotal {
+        font-size: 16px;
+        letter-spacing: 0;
+
+        td {
+          text-align: right;
+        }
+      }
+
+      .order-total {
+        font-size: 20px;
+      }
+    }
+
+    .cart-btn-checkout {
+      a {
+        color: white;
+        display: block;
+        padding: 18px 20px;
+        text-align: center;
+        margin-top: 15px;
+        font-size: 18px;
+        background-color: #2081e2;
+        border: 1px solid #2081e2;
+
+        @media (max-width: 767px){
+          padding: 12px 20px;
+        }
+      }
+    }
+  }
+
+  .cart-btn-shopNow {
+    display: inline-block;
+    margin-top: 15px;
+
+    a {
+      color: white;
+      background-color: #2081e2;
+      border: 1px solid #2081e2;
+      padding: 18px 20px;
+      text-align: center;
+      border-radius: 5px;
+    }
+  }
+}

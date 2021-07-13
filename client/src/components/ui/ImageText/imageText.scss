@@ -1,0 +1,61 @@
+.imageText{
+  margin-bottom: 60px;
+  
+  @media (min-width: 768px){
+    margin-bottom: 80px;
+  }
+
+  &__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    @media (min-width: 768px){
+      flex-direction: row;
+    }
+  }
+
+  &__title{
+    font-size: 32px;
+    color: #0e0e0e;
+    border-left: 6px solid #2081e2;
+    padding-left: 10px;
+    margin-bottom: 20px;
+  }
+
+  &__image, &__boxText{
+    @media (min-width: 768px){
+      width: calc(100% / 2 - 40px);
+    }
+  }
+
+  &__image{
+    padding: 20px 0;
+    margin-bottom: 30px;
+
+    @media (min-width: 768px){
+      margin-bottom: 0;
+    }
+  }
+
+  &__description{
+    margin-bottom: 20px;
+  }
+
+  &__btn{
+    padding: 10px 25px;
+    display: inline-block;
+    background-color: #2081e2;
+    border: 1px solid #2081e2;
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover{
+      background-color: #1868b7;
+      border-color: #1868b7;
+    }
+  }
+}

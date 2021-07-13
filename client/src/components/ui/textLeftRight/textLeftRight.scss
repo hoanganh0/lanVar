@@ -1,0 +1,40 @@
+.TextLeftRight{
+  margin-bottom: 60px;
+  
+  @media (min-width: 768px){
+    margin-bottom: 80px;
+  }
+
+  &__title{
+    text-align: center;
+    font-size: 32px;
+    color: #0e0e0e;
+  }
+
+  &__image{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  &__boxText{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @media (min-width: 768px){
+      flex-direction: row;
+    }
+  }
+
+  &__textLeft, &__textRight{
+    padding: 20px;
+    border-left: 6px solid rgb(32, 129, 226);
+
+    @media (min-width: 768px){
+      width: calc(100% / 2 - 70px);
+      padding: 30px;
+    }
+  }
+
+}

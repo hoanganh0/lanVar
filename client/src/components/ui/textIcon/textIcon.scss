@@ -1,0 +1,51 @@
+.textIcon{
+  margin-bottom: 60px;
+  
+  @media (min-width: 768px){
+    margin-bottom: 80px;
+  }
+
+  &__title{
+    text-align: center;
+    font-size: 32px;
+    color: #0e0e0e;
+    margin-bottom: 40px;
+  }
+
+  &__inner{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @media (min-width: 768px){
+      flex-direction: row;
+    }
+  }
+
+  &__item{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 768px){
+      width: calc(100% / 3 - 60px);
+      margin-bottom: 0;
+    }
+
+    svg{
+      width: 50px !important;
+      height: 50px;
+      color: #2081e2;
+    }
+  }
+
+  &__boxText{
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  &__itemDescription{
+    color: rgb(138, 147, 155);
+  }
+}

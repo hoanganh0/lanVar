@@ -1,0 +1,422 @@
+
+.account{
+  @media (max-width: 991px){
+    padding-top: 70px;
+  }
+
+  @media (max-width: 767px){
+    padding-top: 50px;
+  }
+
+  &__details{
+    padding: 80px 0;
+  }
+
+  &__request-login{
+    margin-top: 30px;
+    
+    p{
+      margin-bottom: 0;
+      padding: 15px 10px;
+      background-color: #2081e2;
+      color: white;
+      border-radius: 5px;
+      font-weight: 500;
+
+      svg{
+        margin-right: 5px;
+      }
+    }
+  }
+
+  h1{
+    margin-bottom: 30px;
+  }
+
+  &__wrap{
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 767px){
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__left{
+    @media (min-width: 768px){
+      width: calc(30% - 30px);
+    }
+
+    ul{
+      padding-left: 0;
+
+      li{
+        list-style-type: none;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #e6e6e6;
+        font-weight: 500;
+        color: #1868b7;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__right{
+    margin-bottom: 30px;
+
+    @media (min-width: 768px){
+      width: calc(70% - 15px);
+      margin-bottom: 0;
+    }
+
+    h4{
+      span{
+        color: #1868b7;
+      }
+    }
+
+    p{
+      display: inline-block;
+      
+      a{
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .form-account {
+    $font-primary: "Lato", Arial, sans-serif;
+    $primary: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
+    $black: black;
+    $white: white;
+    margin: 80px 0;
+    position: relative;
+  
+    &__bg{
+      position: fixed;
+      content: '';
+      width: 100vw;
+      height: 100vw;
+      background-color: rgba(0,0,0,.65);
+      z-index: 1;
+      top: 0;
+      left: 0;
+    }
+  
+    &__notification{
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      width: 300px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #2081e2;
+      color: white;
+      flex-direction: column;
+      padding: 15px;
+      border-radius: 10px;
+      transition: .5s;
+      opacity: 0;
+      visibility: hidden;
+  
+      &.is-show{
+        opacity: 1;
+        top: 50%;
+        visibility: visible;
+      }
+  
+      > div:first-child{
+        width: 100%;
+  
+        svg{
+          color: white;
+          width: 20px;
+        }
+  
+        p{
+          text-align: center;
+          margin: 10px 0 20px;
+        }
+      }
+    }
+  
+    &__try-again{
+      margin-left: auto;
+      padding: 6px 10px; 
+      background-color: white;
+      color: rgba(14, 14, 14, 0.75);
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  
+    svg{
+      width: 25px;
+      height: 25px;
+      color: #1868b7;
+    }
+  
+    @mixin gradient-background() {
+      background-image: linear-gradient(315deg, #05e8ba 0%, #087ee1 74%);
+    }
+  
+    .bg-primary {
+      background-image: $primary;;
+    }
+  
+    .ftco-section {
+      padding: 7em 0;
+    }
+  
+    .ftco-no-pt {
+      padding-top: 0;
+    }
+    .ftco-no-pb {
+      padding-bottom: 0;
+    }
+    //HEADING SECTION
+    .heading-section {
+      font-size: 28px;
+      color: $black;
+    }
+  
+    //COVER BG
+    .img {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+  
+    .wrap {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    }
+    .text-wrap,
+    .login-wrap {
+      width: 50%;
+  
+      width: 100%;
+    }
+  
+    .text-wrap {
+      @include gradient-background();
+      color: $white;
+      .text {
+        h2 {
+          font-weight: 900;
+          color: $white;
+        }
+      }
+    }
+  
+    .login-wrap {
+      position: relative;
+      background: $white;
+      h3 {
+        font-weight: 300;
+      }
+    }
+  
+    .form-group {
+      position: relative;
+      .label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: $black;
+        font-weight: 700;
+      }
+      a {
+        color: lighten($black, 50%);
+      }
+    }
+  
+    .form-btnSubbmit{
+      display: flex;
+      align-items: center;
+  
+      img{
+        margin-left: 10px;
+        width: 25px;
+        height: 25px;
+        display: none;
+      }
+  
+      &.is-show{
+        img{
+          display: block;
+        }
+      }
+    }
+  
+    //FORM CONTROL
+    .form-control {
+      height: 48px;
+      background: rgba(0, 0, 0, 0.05);
+      color: $black;
+      font-size: 16px;
+      border-radius: 50px;
+      box-shadow: none;
+      border: 1px solid transparent;
+      padding-left: 20px;
+      padding-right: 20px;
+  
+      &:focus,
+      &:active {
+        outline: none !important;
+        box-shadow: none;
+        background: rgba(0, 0, 0, 0.07);
+        border-color: transparent;
+      }
+    }
+  
+    .social-media {
+      position: relative;
+      width: 100%;
+  
+      .social-icon {
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: transparent;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        margin-right: 5px;
+        border-radius: 50%;
+        span {
+          color: lighten($black, 60%);
+        }
+        &:hover,
+        &:focus {
+          background: $primary;
+          span {
+            color: $white;
+          }
+        }
+      }
+    }
+  
+    //CHECKBOX STYLE
+    .checkbox-wrap {
+      display: block;
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      user-select: none;
+    }
+  
+    /* Hide the browser's default checkbox */
+    .checkbox-wrap input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+  
+    /* Create a custom checkbox */
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+      content: "\f0c8";
+      font-family: "FontAwesome";
+      position: absolute;
+      color: rgba(0, 0, 0, 0.1);
+      font-size: 20px;
+      margin-top: -4px;
+    }
+  
+    /* Show the checkmark when checked */
+    .checkbox-wrap {
+      input:checked ~ .checkmark:after {
+        display: block;
+        content: "\f14a";
+        font-family: "FontAwesome";
+        color: rgba(0, 0, 0, 0.2);
+      }
+    }
+  
+    /* Style the checkmark/indicator */
+    .checkbox-wrap .checkmark:after {
+    }
+  
+    .checkbox-primary {
+      color: $primary;
+      input:checked ~ .checkmark:after {
+        color: $primary;
+      }
+    }
+  
+    //BUTTON
+    .btn {
+      cursor: pointer;
+      box-shadow: none !important;
+      font-size: 15px;
+      padding: 10px 20px;
+      border-radius: 50px;
+      &:hover,
+      &:active,
+      &:focus {
+        outline: none;
+      }
+      &.btn-primary {
+        background: $primary;
+        border: 1px solid $primary;
+        color: $white;
+        border: 0;
+  
+        &:hover {
+          border: 1px solid $primary;
+          background: $primary;
+          color: $white;
+        }
+        &.btn-outline-primary {
+          border: 1px solid $primary;
+          background: transparent;
+          color: $primary;
+          &:hover {
+            border: 1px solid transparent;
+            background: $primary;
+            color: $white;
+          }
+        }
+      }
+  
+      &.btn-white {
+        background: $white;
+        border: 1px solid $white;
+        color: $white;
+        &:hover {
+          border: 1px solid $white;
+          background: transparent;
+          color: $white;
+        }
+        &.btn-outline-white {
+          border: 1px solid $white;
+          background: transparent;
+          color: $white;
+          &:hover {
+            border: 1px solid transparent;
+            background: $white;
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+}

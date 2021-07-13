@@ -1,0 +1,23 @@
+#root{
+  padding-bottom: 200px;
+  position: relative;
+  min-height: 100vh;
+}
+
+.container{
+  @media (min-width: 1400px){
+    max-width: 1320px;
+  }
+}
+
+a{
+  color: #212529;
+  &:hover{
+    text-decoration: none;
+  }
+}
+
+.disable{
+  pointer-events: none;
+  opacity: .3;
+}

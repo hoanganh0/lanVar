@@ -1,0 +1,13 @@
+.search-page{
+  padding: 70px 0;
+
+  @media (max-width: 991px){
+    padding-top: 100px;
+  }
+
+  h1{
+    @media (max-width: 991px){
+      font-size: 30px;
+    }
+  }
+}
