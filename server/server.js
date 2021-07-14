@@ -19,6 +19,8 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
+app.get('/cool', (req, res) => res.send('test'));
+
 app.use(express.json());
 
 app.use('/api/products', productRoutes);
