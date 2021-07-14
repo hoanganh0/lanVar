@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const productRoutes = require('./routes/productRoutes');
 const accountRoutes = require('./routes/accountRouters');
@@ -23,6 +24,10 @@ app.use(express.json());
 app.use('/api/products', productRoutes);
 
 app.use('/api/account', accountRoutes);
+
+app.use('/shop', (req, res) => {
+  res.json(path)
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
