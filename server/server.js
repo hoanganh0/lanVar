@@ -12,14 +12,13 @@ connectDB();
 const app = express();
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static(path.join(__dirname, 'build')));
 
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// app.get('/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
-app.get('/cool', (req, res) => res.send('test'));
 
 app.use(express.json());
 
@@ -27,9 +26,6 @@ app.use('/api/products', productRoutes);
 
 app.use('/api/account', accountRoutes);
 
-app.use('/shop', (req, res) => {
-  res.json(path)
-})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
