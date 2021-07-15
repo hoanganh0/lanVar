@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -9,8 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SearchProduct from '../../redux/actions/search';
 
 const Header = () => {
-  const [toggler, setToggler] = useState(false);
-
   const user = useSelector(state => state.account.username);
   const cartItem = useSelector(state => state.cartItem.cartItems);
   const orderItem = useSelector(state => state.orders.orderItem.length);

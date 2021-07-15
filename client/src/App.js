@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Account } from './redux/actions/account';
 import { ViewOrder } from './redux/actions/orders';
 import { AddManyItem } from './redux/actions/cart';
+import ScrollToTop from './components/scrollTop/scrollTop';
 
 function App() {
   const dispatch = useDispatch();
@@ -35,15 +36,17 @@ function App() {
   return (
     <>
       <Header />
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/shop' component={Shop} />
-        <Route path='/product/:id' component={Product} />
-        <Route path='/cart' component={Cart} />
-        <Route path='/account' component={FormAccount} />
-        <Route path='/order' component={Orders} />
-        <Route path='/search' component={Search} />
-      </Switch>
+      <ScrollToTop>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/shop' component={Shop} />
+          <Route path='/product/:id' component={Product} />
+          <Route path='/cart' component={Cart} />
+          <Route path='/account' component={FormAccount} />
+          <Route path='/order' component={Orders} />
+          <Route path='/search' component={Search} />
+        </Switch>
+      </ScrollToTop>
       <Footer />
     </>
   );

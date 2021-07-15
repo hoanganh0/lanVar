@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { AddToCart } from "../../redux/actions/cart";
+import { Facebook, Instagram, List } from 'react-content-loader'
 
 //css
 import "./product.scss";
@@ -15,6 +16,7 @@ import {
   faCheckCircle,
   faCubes,
 } from "@fortawesome/free-solid-svg-icons";
+import { URL } from "../../ global-variable/variable";
 
 export default function Product() {
   const { id } = useParams();
@@ -32,7 +34,7 @@ export default function Product() {
     
     const productDetail = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/products/${id}`);
+        const { data } = await axios.get(`${URL}/api/products/${id}`);
         await setProduct(data);
       } catch (error) {
         console.error(error);
@@ -46,9 +48,10 @@ export default function Product() {
 
   //handler add to cart
   const handlerAddToCart = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     const qty = Number(document.querySelector('.product__quantity input').value);
     dispatch(AddToCart(id, qty));
-    document.querySelector('.product__success').classList.remove('is-show')
+    document.querySelector('.product__success').classList.remove('is-show');
     setTimeout(() => document.querySelector('.product__success').classList.add('is-show'), 200);
   }
 
@@ -164,7 +167,16 @@ export default function Product() {
             </div>
           </div>
         </div>
-      ) : null}
+      ) :
+      <div className='product product--loading'>
+        <div className="container">
+          <div className='product--loading-wrap'>
+            <div><Instagram /><List /></div>
+            <div><Facebook/></div>
+          </div>
+        </div>
+    </div>
+      }
     </>
   );
 }

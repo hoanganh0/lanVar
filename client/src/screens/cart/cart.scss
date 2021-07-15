@@ -201,7 +201,11 @@
     }
 
     .cart-btn-checkout {
-      a {
+      display: flex;
+      align-items: center;
+
+      div {
+        width: 100%;
         color: white;
         display: block;
         padding: 18px 20px;
@@ -210,9 +214,22 @@
         font-size: 18px;
         background-color: #2081e2;
         border: 1px solid #2081e2;
+        cursor: pointer;
 
         @media (max-width: 767px){
           padding: 12px 20px;
+        }
+      }
+
+      .icon-loading{
+        display: none;
+        width: 30px;
+        height: 45px;
+        padding-top: 15px;
+        margin-left: 10px;
+
+        &.is-show{
+          display: block;
         }
       }
     }

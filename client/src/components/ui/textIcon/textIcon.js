@@ -1,9 +1,3 @@
-import {
-  faAward,
-  faCartArrowDown,
-  faSun,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./textIcon.scss";
 
 const TextIcon = ({ title, item }) => {

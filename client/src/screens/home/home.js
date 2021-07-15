@@ -7,12 +7,10 @@ import Banner from '../../components/ui/banner/banner';
 import ImageText from '../../components/ui/ImageText/imageText';
 import TextLeftRight from '../../components/ui/textLeftRight/textLeftRight';
 import TextIcon from '../../components/ui/textIcon/textIcon';
-import { useEffect, useState } from 'react';
 
 //redux
-import { useDispatch, useSelector } from 'react-redux';
-import { getListProducts } from '../../redux/actions/products';
 import useGetAllProduct from '../../hooks/useGetAllProduct';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const dataProduct = useGetAllProduct();
@@ -40,7 +38,7 @@ const Home = () => {
         <div className="container">
           <div className='productData__top'>
             <h2 className='productData__title'><FontAwesomeIcon icon={faSeedling} /> Lan var expo</h2>
-            <div className='productData__viewAll'>View All <FontAwesomeIcon icon={faChevronRight} /></div>
+            <div className='productData__viewAll'><Link to='/shop'>View All <FontAwesomeIcon icon={faChevronRight} /></Link></div>
           </div>
           <div className="row">
             <ListProduct dataProduct={dataProduct} offset={0} limit={4}/>
@@ -58,7 +56,7 @@ const Home = () => {
         <div className="container">
           <div className='productData__top'>
             <h2 className='productData__title'><FontAwesomeIcon icon={faSeedling} /> Lan var expo</h2>
-            <div className='productData__viewAll'>View All <FontAwesomeIcon icon={faChevronRight} /></div>
+            <div className='productData__viewAll'><Link to='/shop'>View All <FontAwesomeIcon icon={faChevronRight} /></Link></div>
           </div>
           <div className="row">
             <ListProduct dataProduct={dataProduct} offset={4} limit={8}/>

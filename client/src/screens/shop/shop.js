@@ -10,17 +10,17 @@ import {
   faChevronRight,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect, useCallback } from "react";
-
+import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import ListProduct from "../../components/product/listProduct/listProduct";
 
 //redux
-import { useSelector, useDispatch } from "react-redux";
-import { getListProducts } from "../../redux/actions/products";
-import useGetAllProduct from "../../hooks/useGetAllProduct";
+import { useSelector } from "react-redux";
 import axios from "axios";
+import { URL } from "../../ global-variable/variable";
 
 const Shop = () => {
+  const dataAllProduct = useSelector(state => state.listProduct.products);
   const [filter, setFilter] = useState(false);
   const [filterPrice, setFilterPrice] = useState(false);
   const [dataProduct, setDataProduct] = useState(false);
@@ -31,12 +31,18 @@ const Shop = () => {
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(numberLimit);
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   const filterItem = (e) => {
     const textContent = e.target.textContent.toLowerCase();
     const dataFilter = [...dataProductDefault].filter((value) => {
       return value.type === textContent;
     });
-
+    e.target.classList.add('highlight');
     setOffset(0);
     setLimit(numberLimit);
 
@@ -99,6 +105,11 @@ const Shop = () => {
       .closest(".product__filter-button")
       .textContent.toLowerCase();
 
+    Array.from(document.querySelectorAll('.product__collectionBody li')).map(value => {
+      if(value.textContent.toLowerCase().trim() === textContent.trim()){
+        value.classList.remove('highlight');
+      }
+    })
     setFilter(
       [...filter].filter((value) => {
         return value !== textContent.slice(0, textContent.length - 1);
@@ -117,6 +128,9 @@ const Shop = () => {
   };
 
   const removeAllFilter = () => {
+    Array.from(document.querySelectorAll('.product__collectionBody li')).map(value => {
+      value.classList.remove('highlight');
+    })
     setDataProduct(dataProductDefault);
     setDataProductFilter(dataProductDefault);
     setFilter(false);
@@ -127,6 +141,7 @@ const Shop = () => {
   const handleFilterPrice = () => {
     const priceMin = document.querySelectorAll(".product__priceMin")[0].value;
     const priceMax = document.querySelectorAll(".product__priceMax")[0].value;
+    console.log(priceMin, priceMax)
 
     setOffset(0);
     setLimit(numberLimit);
@@ -140,6 +155,7 @@ const Shop = () => {
 
   const handleSticky = () => {
     document.querySelector('.product__left').classList.toggle('is-show');
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const sortPrice = (e) => {
@@ -181,12 +197,20 @@ const Shop = () => {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/products');
-        setDataProduct(res.data);
-        setDataProductDefault(res.data);
-        setPaginationItem(
-          new Array(Math.ceil(res.data.length / numberLimit)).fill(null)
-        );
+        if (dataAllProduct.length) {
+          await setDataProduct(dataAllProduct);
+          setDataProductDefault(dataAllProduct);
+          setPaginationItem(
+            new Array(Math.ceil(dataAllProduct.length / numberLimit)).fill(null)
+          );
+        } else {
+          const res = await axios.get(`${URL}/api/products`);
+          setDataProduct(res.data);
+          setDataProductDefault(res.data);
+          setPaginationItem(
+            new Array(Math.ceil(res.data.length / numberLimit)).fill(null)
+          );
+        }
       } catch (error) {
         console.error(error);
       }
@@ -286,30 +310,25 @@ const Shop = () => {
               <header>
                 <FontAwesomeIcon icon={faDollarSign} /> Price
               </header>
-              <Dropdown className="product__priceCurrency">
-                <Dropdown.Toggle id="dropdown-basic">
-                  Ether (ETH)
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Dollar ($)</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
               <div className="product__priceInput">
-                <div>
+                <form onSubmit={handleSubmit(handleFilterPrice)}>
                   <input
                     className="product__priceMin"
-                    type="number"
-                    placeholder=" Min"
-                  />{" "}
+                    type='number'
+                    placeholder="Min"
+                    required
+                    {...register("min", { required: true })}
+                  />
                   to
                   <input
                     className="product__priceMax"
                     type="number"
+                    required
                     placeholder=" Max"
+                    {...register("max", { required: true })}
                   />
-                </div>
-                <div onClick={handleFilterPrice}>Apply</div>
+                  <div><button type='submit'>Apply</button></div>
+                </form>
               </div>
             </div>
           </div>
@@ -320,16 +339,16 @@ const Shop = () => {
               <div>
                 {filter
                   ? filter.map((value, index) => {
-                      return (
-                        <div key={index} className="product__filter-button">
-                          {value}{" "}
-                          <FontAwesomeIcon
-                            icon={faTimes}
-                            onClick={removeFilter}
-                          />
-                        </div>
-                      );
-                    })
+                    return (
+                      <div key={index} className="product__filter-button">
+                        {value}{" "}
+                        <FontAwesomeIcon
+                          icon={faTimes}
+                          onClick={removeFilter}
+                        />
+                      </div>
+                    );
+                  })
                   : null}
                 {filterPrice ? (
                   <div className="product__filter-button">
@@ -351,7 +370,7 @@ const Shop = () => {
               <Dropdown>
                 <Dropdown.Toggle
                   className="product__rightBtn"
-                  id="dropdown-basic"
+                  id="dropdown-basic dropdown-showItem"
                 >
                   All items
                 </Dropdown.Toggle>
@@ -364,7 +383,7 @@ const Shop = () => {
               <Dropdown>
                 <Dropdown.Toggle
                   className="product__rightBtn"
-                  id="dropdown-basic"
+                  id="dropdown-basic dropdown-sort"
                 >
                   Sort by
                 </Dropdown.Toggle>
@@ -398,9 +417,8 @@ const Shop = () => {
             {paginationItem ? (
               <ul>
                 <li
-                  className={`product__pagination-prev ${
-                    offset === 0 ? "disable" : ""
-                  }`}
+                  className={`product__pagination-prev ${offset === 0 ? "disable" : ""
+                    }`}
                   onClick={prevPage}
                   data-page="prev"
                 >
@@ -410,9 +428,8 @@ const Shop = () => {
                   return (
                     <li
                       key={index}
-                      className={`product__pagination-item ${
-                        (index + 1) * 12 === limit ? "current" : ""
-                      }`}
+                      className={`product__pagination-item ${(index + 1) * 12 === limit ? "current" : ""
+                        }`}
                       onClick={changePage}
                     >
                       {index + 1}
@@ -420,11 +437,10 @@ const Shop = () => {
                   );
                 })}
                 <li
-                  className={`product__pagination-next ${
-                    offset / numberLimit + 1 === paginationItem.length
+                  className={`product__pagination-next ${offset / numberLimit + 1 === paginationItem.length
                       ? "disable"
                       : ""
-                  }`}
+                    }`}
                   onClick={nextPage}
                   data-page="next"
                 >

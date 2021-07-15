@@ -183,6 +183,13 @@
           }
         }
       }
+
+      &.highlight{
+        svg{
+          color: #1868b7;
+          transform: scale(1.2)
+        }
+      }
     }
   }
 
@@ -206,10 +213,11 @@
   }
 
   &__priceInput{
-    div:first-child{
+    form{
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       margin-bottom: 15px;
 
       input{
@@ -222,18 +230,24 @@
           border: 1px solid #0a58ca !important;
         }
       }
-    }
 
-    div:last-child{
-      padding: 12px 30px;
-      border: 1px solid rgb(32, 129, 226);
-      border-radius: 5px;
-      display: inline-block;
-      cursor: pointer;
-      color: rgb(32, 129, 226);
+      div{
+        width: 100%;
+        margin-top: 15px;
+      }
 
-      &:hover{
-        box-shadow: rgba(14,14,14, 0.25) 0px 0px 8px 0px;
+      button{
+        padding: 12px 30px;
+        border: 1px solid rgb(32, 129, 226);
+        border-radius: 5px;
+        display: inline-block;
+        cursor: pointer;
+        color: rgb(32, 129, 226);
+        background-color: white;
+  
+        &:hover{
+          box-shadow: rgba(14,14,14, 0.25) 0px 0px 8px 0px;
+        }
       }
     }
   }
@@ -266,7 +280,7 @@
 
   &__filter-item{
     @media (max-width: 991px){
-      padding: 0 12px;
+      padding: 0 18px;
     }
 
     > div{
@@ -310,6 +324,7 @@
 
   &__sortby{
     display: flex;
+    justify-content: center;
 
     .dropdown-item{
       padding-left: 12px;
@@ -318,7 +333,6 @@
     @media (max-width: 991px){
       margin-bottom: 10px;
     }
-
   }
 
   &__rightBtn{

@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux";
 import { Account, RequestLogin } from "../../redux/actions/account";
 import { useSelector } from "react-redux";
 import { ViewOrder } from "../../redux/actions/orders";
+import { URL } from "../../ global-variable/variable";
 
 const FormAccount = () => {
   const [userExist, setUserExist] = useState();
@@ -28,7 +29,6 @@ const FormAccount = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
@@ -41,7 +41,7 @@ const FormAccount = () => {
 
       if (statusForm === "signIn") {
         const res = await axios.get(
-          `http://localhost:5000/api/account/signIn?username=${data.username}&password=${data.password}`
+          `${URL}/api/account/signIn?username=${data.username}&password=${data.password}`
         );
         setIconLoading(false);
 
@@ -56,7 +56,7 @@ const FormAccount = () => {
         }
       } else {
         const res = await axios.get(
-          `http://localhost:5000/api/account/signUp?username=${data.username}&password=${data.password}`
+          `${URL}/api/account/signUp?username=${data.username}&password=${data.password}`
         );
         setIconLoading(false);
         setNotification(true);

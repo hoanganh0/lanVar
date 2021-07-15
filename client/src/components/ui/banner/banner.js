@@ -7,6 +7,7 @@ import { Instagram } from 'react-content-loader'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSeedling } from "@fortawesome/free-solid-svg-icons";
 import "./banner.scss";
+import { URL } from "../../../ global-variable/variable";
 
 const Banner = () => {
   const [singleProduct, setSingleProduct] = useState();
@@ -14,7 +15,7 @@ const Banner = () => {
   useEffect(() => {
     const getDataProduct = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/products/60ed64a418bad78a6bd508e2`);
+        const res = await axios.get(`${URL}/api/products/60ef059f9327eadadaa9fc85`);
         setSingleProduct(res.data);
       } catch (error) {
         console.error(error);
@@ -58,7 +59,7 @@ const Banner = () => {
                     </div>
                   </div>
                 </Link>
-              </div> : <Instagram />
+              </div> : <div className='banner__right'><Instagram /></div>
           }
         </div>
       </div>

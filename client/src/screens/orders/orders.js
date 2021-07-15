@@ -1,7 +1,4 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 import './orders.scss';
 
@@ -18,7 +15,7 @@ const Orders = () => {
               orders.length ?
                 orders.map((value, index) => {
                   return (
-                    <div className="order-page__table">
+                    <div key={index} className="order-page__table">
                       <h5>Order #ab{Math.floor(Math.random() * 500) + 100}od</h5>
                       <div>
                         <table>
@@ -32,9 +29,9 @@ const Orders = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {value.map((order) => {
+                            {value.map((order, index) => {
                               return (
-                                <tr>
+                                <tr key={index}>
                                   <td className="order-product-details">
                                     <div className="product-thumbnail">
                                       <img

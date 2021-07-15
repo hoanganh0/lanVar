@@ -26,6 +26,7 @@ const Cart = () => {
 
   const handleCreateOrder = async () => {
     const dataOrder = { orders: cartItem, username: account };
+    document.querySelector('.icon-loading').classList.add('is-show');
 
     if (account) {
       await dispatch(CreateOrder(dataOrder));
@@ -101,7 +102,8 @@ const Cart = () => {
                     </tbody>
                   </table>
                   <div className="cart-btn-checkout">
-                    <Link onClick={handleCreateOrder}>Proceed to checkout</Link>
+                    <div onClick={handleCreateOrder}>Proceed to checkout</div>
+                    <img className='icon-loading' src="/images/loading.gif" alt="" />
                   </div>
                 </div>
               </div>
