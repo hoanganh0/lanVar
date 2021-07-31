@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 //css
 import './header.scss';
-import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faShoppingCart, faSpa } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SearchProduct from '../../redux/actions/search';
 
@@ -17,6 +17,10 @@ const Header = () => {
 
   const handToggler = () => {
     document.querySelector('.navbar__listItem').classList.toggle('isShow');
+  }
+
+  const removeToggler = () => {
+    document.querySelector('.navbar__listItem').classList.remove('isShow');
   }
 
   const handleSearch = () => {
@@ -39,8 +43,8 @@ const Header = () => {
       <nav className='navbar navbar-expand-lg navbar-light'>
         <div className="container-fluid">
           <div className='navbar__logo'>
-            <Link to='/' className="navbar-brand" onClick={handToggler}>
-                Varchain
+            <Link to='/' className="navbar-brand" onClick={removeToggler}>
+              <FontAwesomeIcon icon={faSpa} />  Lanvar
             </Link>
           </div>
           <div className='d-flex navbar__search'>
@@ -51,6 +55,11 @@ const Header = () => {
               placeholder="Search lan var"
               aria-label="Search"
             />
+          </div>
+          <div className="navbar__cart">
+            <Link to='/cart' className="nav-link">
+              <span className='navbar__numberItemCart'><span>{cartItem.length > 0 ? cartItem.length : 0}</span><FontAwesomeIcon icon={faShoppingCart} /></span>
+            </Link>
           </div>
           <ul className={`navbar-nav mb-2 mb-lg-0 navbar__listItem`}>
             <li className="nav-item">

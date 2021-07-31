@@ -124,7 +124,7 @@
 
   &__left-filter{
     @media (max-width: 991px){
-      max-height: calc(100vh - 100px);
+      max-height: calc(100vh - 120px);
       overflow: auto
     }
   }
@@ -225,6 +225,7 @@
         height: 40px;
         border: 1px solid rgb(229, 232, 235);
         font-size: 15px;
+        padding-left: 10px;
 
         &:focus{
           border: 1px solid #0a58ca !important;
@@ -260,6 +261,12 @@
     @media (min-width: 992px){
       width: calc(100% - 420px);
       margin-left: 0;
+    }
+
+    .row{
+      h4{
+        margin-left: 15px;
+      }
     }
   }
 
@@ -411,8 +418,8 @@
 
       li{
         list-style-type: none;
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
         display: flex;
         justify-content: center;
         align-items: center;

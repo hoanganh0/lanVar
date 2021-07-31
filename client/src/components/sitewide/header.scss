@@ -21,6 +21,16 @@
     padding: 0;
   }
 
+  &__logo{
+    a{
+      font-weight: 600;
+
+      svg{
+        color: #1868b7;
+      }
+    }
+  }
+
   &__search{
     max-width: 768px;
     flex: 1 0 0%;
@@ -30,7 +40,7 @@
     color: rgba(14, 14, 14, 0.75);
     background-color: #ffffff;
     padding-left: 10px;
-    margin: 0 15px;
+    margin: 0 8px;
 
     @media (min-width: 768px){
       margin: 0 50px;
@@ -57,6 +67,19 @@
       border: none;
     }
 
+  }
+
+  &__cart{
+    display: block;
+
+    @media (min-width: 992px){
+      display: none;
+    }
+
+    a{
+      color: rgba(14, 14, 14, 0.75);
+      font-weight: 600;
+    }
   }
 
   &__listItem{

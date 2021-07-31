@@ -11,7 +11,7 @@ const Footer = () => {
     <footer className='footer'>
       <div className="container">
         <ul className='footer__list'>
-          <li><Link to='/'>Lan var</Link></li>
+          <li><Link to='/shop'>Lan var</Link></li>
           <li><Link to='/'>About us</Link></li>
           <li><Link to='/'>FAQ</Link></li>
           <li><Link to='/'>Support</Link></li>
@@ -19,7 +19,7 @@ const Footer = () => {
           <li><Link to='/'>Events</Link></li>
         </ul>
         <div className='footer__bottom'>
-         {year} 🌸 varchain.io 🌸 Vietnam
+         {year} 🌸 Lanvar 🌸 Vietnam
           <div>
           <Link to='/'><FontAwesomeIcon icon={faFacebook} /></Link> 
          <Link to='/'><FontAwesomeIcon icon={faInstagram} /></Link>

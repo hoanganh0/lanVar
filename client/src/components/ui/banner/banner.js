@@ -15,7 +15,7 @@ const Banner = () => {
   useEffect(() => {
     const getDataProduct = async () => {
       try {
-        const res = await axios.get(`${URL}/api/products/60ef059f9327eadadaa9fc85`);
+        const res = await axios.get(`${URL}/api/products/60efe05fe751c4f333920946`);
         setSingleProduct(res.data);
       } catch (error) {
         console.error(error);

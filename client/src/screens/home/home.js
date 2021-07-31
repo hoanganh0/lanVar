@@ -48,7 +48,7 @@ const Home = () => {
       <ImageText
         title='Auction House – make a profit!'
         description='Your unique flower brings real profit! Get money for crossing your flowers with the flowers of other players or sell flowers at Auction House of VarChain!'
-        button={{ title: 'Discover now', url: '/' }}
+        button={{ title: 'Discover now', url: '/shop' }}
         image={{ url: '/images/Group2.png', alt: 'auction2' }}
         modifier='yes'
       />

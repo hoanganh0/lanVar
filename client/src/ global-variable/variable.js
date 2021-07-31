@@ -1,1 +1,1 @@
-export const URL = 'https://lanvar.herokuapp.com';
+export const URL = 'https://api-lanvar.herokuapp.com';

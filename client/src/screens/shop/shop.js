@@ -141,16 +141,13 @@ const Shop = () => {
   const handleFilterPrice = () => {
     const priceMin = document.querySelectorAll(".product__priceMin")[0].value;
     const priceMax = document.querySelectorAll(".product__priceMax")[0].value;
-    console.log(priceMin, priceMax)
 
     setOffset(0);
     setLimit(numberLimit);
     setFilterPrice({ priceMin: priceMin, priceMax: priceMax });
-    setDataProduct(
-      [...dataProductFilter].filter((value) => {
-        return value.price > Number(priceMin) && value.price < Number(priceMax);
-      })
-    );
+    setDataProduct([...dataProductFilter].filter((value) => {
+      return value.price > Number(priceMin) && value.price < Number(priceMax);
+    }));
   };
 
   const handleSticky = () => {
@@ -200,6 +197,7 @@ const Shop = () => {
         if (dataAllProduct.length) {
           await setDataProduct(dataAllProduct);
           setDataProductDefault(dataAllProduct);
+          setDataProductFilter(dataAllProduct)
           setPaginationItem(
             new Array(Math.ceil(dataAllProduct.length / numberLimit)).fill(null)
           );
@@ -207,6 +205,7 @@ const Shop = () => {
           const res = await axios.get(`${URL}/api/products`);
           setDataProduct(res.data);
           setDataProductDefault(res.data);
+          setDataProductFilter(res.data);
           setPaginationItem(
             new Array(Math.ceil(res.data.length / numberLimit)).fill(null)
           );
@@ -324,7 +323,7 @@ const Shop = () => {
                     className="product__priceMax"
                     type="number"
                     required
-                    placeholder=" Max"
+                    placeholder="Max"
                     {...register("max", { required: true })}
                   />
                   <div><button type='submit'>Apply</button></div>
@@ -405,11 +404,14 @@ const Shop = () => {
           <div className="product__bottomRight">
             <div className="productData__box">
               <div className="row productData__row">
-                <ListProduct
+                {(dataProduct.length === 0 && dataProduct) ?
+                  <h4>No product found</h4> : <ListProduct
                   dataProduct={dataProduct}
                   offset={offset}
                   limit={limit}
-                />
+                /> 
+                }
+                
               </div>
             </div>
           </div>

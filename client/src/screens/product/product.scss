@@ -132,6 +132,7 @@
     justify-content: center;
     transition: .4s;
     z-index: -1;
+    opacity: 0;
 
     @media (max-width: 991px){
       padding: 6px;
@@ -140,6 +141,7 @@
     &.is-show{
       top: 60px;
       visibility: visible;
+      opacity: 1;
 
       @media (max-width: 991px){
         top: -42px;

@@ -11,7 +11,7 @@ const ListProduct = ({ dataProduct, offset, limit }) => {
 
   return (
     <>
-      {dataProduct
+      {dataProduct.length
         ? dataProduct.map((value, index) => {
           index++;
           if(index <= limit && index > offset){

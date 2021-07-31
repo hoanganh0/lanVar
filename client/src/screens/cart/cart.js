@@ -1,5 +1,4 @@
 import { Link, useHistory } from 'react-router-dom';
-import axios from 'axios';
 import './cart.scss';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
